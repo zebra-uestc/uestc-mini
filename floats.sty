@@ -1,0 +1,48 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{uestc-mini/floats}
+
+\RequirePackage{fancyvrb}
+\RequirePackage{caption}
+% 图标标题设置
+\captionsetup{
+    margin={2.6em,2.6em},
+    format=hang,
+    labelsep=space,
+    skip=6bp}
+
+% 浮动体间距设置
+\intextsep=14bp plus 2bp minus 2bp
+\textfloatsep=22bp plus 2bp minus 2bp
+
+% 浮动体优化
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.65}
+\renewcommand{\floatpagefraction}{0.60}
+
+\renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}}
+\renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}
+
+\newenvironment{Figure}[3][htbp]{
+    \def\figcaption{#3}
+    \def\figlabel{#2}
+    \begin{figure}[#1]
+    \par\vspace{-0bp}
+    \centering
+  }{
+    \caption{\figcaption}
+    \label{\figlabel}
+    \par\vspace{-11bp}
+    \end{figure}
+  }
+
+\newenvironment{Table}[3][htbp]{
+    \begin{table}[#1]
+    \par\vspace{-3bp}
+    \centering
+    \caption{#3}
+    \label{#2}
+  }{
+    \par\vspace{-8bp}
+    \end{table}
+  }

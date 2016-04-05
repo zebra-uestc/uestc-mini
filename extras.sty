@@ -1,0 +1,33 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{uestc-mini/extras}
+
+\RequirePackage{ifthen}
+
+\newlength{\hindent}
+\newcommand{\Heading}[2][]{
+  \ifthenelse{\equal{#1}{}}
+    {\setlength{\hindent}{0em}}
+    {\setlength{\hindent}{2em}}
+  \smallskip
+  {\noindent\heiti\makebox[\hindent][l]{#1}#2}\nopagebreak
+  \smallskip
+}
+
+\newcommand{\Cite}[1]{\textsuperscript{\cite{#1}}}
+
+
+\newcounter{Code}[chapter]
+\renewcommand{\theCode}{\thechapter-\arabic{Code}}
+\DefineVerbatimEnvironment{Code}{Verbatim}{
+  fontsize=\zihao{5}\refstepcounter{Code},
+  label={\zihao{5}代码 \theCode},
+  baselinestretch=1,
+  frame=lines,
+  framesep=6pt,
+}
+\DefineVerbatimEnvironment{CodeLines}{Verbatim}{
+  fontsize=\zihao{5},
+  baselinestretch=1,
+  framesep=0pt,
+  xleftmargin=2em,
+}
