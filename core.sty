@@ -18,10 +18,10 @@
   centering,
   a4paper}
 
+
 % 章节标题
 \ctexset{contentsname={目\enspace{}录}}
 \ctexset{chapter={
-  number={\arabic{chapter}},
   nameformat={},titleformat={},
   format={\heiti\zihao{-3}\centering},
   aftername={\enspace},
@@ -47,19 +47,30 @@
   afterskip={6bp plus 1.2bp minus 1.2bp},
 }}
 
+
 % 页眉页脚
-\pagestyle{fancy}
 \renewcommand{\chaptermark}[1]
   {\markboth{\CTEXthechapter\enspace{}#1}{}}
-\newcommand{\setMainHeadStyle}{
+
+\newcommand{\MainPageStyle}[1]{
   \fancyhf{}
   \fancyhead[OC]{\zihao{5}\leftmark}
-  \fancyhead[EC]{\zihao{5}电子科技大学学士学位论文}
+  \fancyhead[EC]{\zihao{5}#1}
   \fancyfoot[C]{\zihao{-5}\thepage}}
-\newcommand{\setFrontHeadStyle}[1]{
+\newcommand{\setMainPageStyle}[1]{
+  \fancypagestyle{MainPage}{\MainPageStyle{#1}}
+  \fancypagestyle{plain}{\MainPageStyle{#1}}
+  \pagestyle{MainPage}}
+
+\newcommand{\FrontPageStyle}[1]{
   \fancyhf{}
   \fancyhead[C]{\zihao{5}#1}
   \fancyfoot[C]{\zihao{-5}\thepage}}
+\newcommand{\setFrontPageStyle}[1]{
+  \fancypagestyle{FrontPage}{\FrontPageStyle{#1}}
+  \fancypagestyle{plain}{\FrontPageStyle{#1}}
+  \pagestyle{FrontPage}}
+
 
 % 杂项
 \raggedbottom
